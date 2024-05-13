@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckmb16gntmkf1"]
+
+[ext_resource type="Texture2D" uid="uid://pm8obyte26mx" path="res://assets/background/rocks_2.png" id="1_2yu7o"]
+[ext_resource type="PackedScene" uid="uid://dpjcoxisn2bwn" path="res://plane_cb/plane_cb.tscn" id="2_3b614"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(218, 333)
+texture = ExtResource("1_2yu7o")
+
+[node name="PlaneCB" parent="." instance=ExtResource("2_3b614")]
+position = Vector2(83, 479)
