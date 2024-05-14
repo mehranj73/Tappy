@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpjcoxisn2bwn"]
+[gd_scene load_steps=10 format=3 uid="uid://dpjcoxisn2bwn"]
 
 [ext_resource type="Texture2D" uid="uid://4dxu1u3tits7" path="res://assets/plane/planes_sheet.png" id="1_3ko38"]
+[ext_resource type="Script" path="res://plane_cb/plane_cb.gd" id="1_a3sbi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k28c1"]
 atlas = ExtResource("1_3ko38")
@@ -34,9 +35,32 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmv74"]
 radius = 27.0
 
+[sub_resource type="Animation" id="Animation_6ycan"]
+resource_name = "fly"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.349066, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g4nou"]
+_data = {
+"fly": SubResource("Animation_6ycan")
+}
+
 [node name="PlaneCB" type="CharacterBody2D"]
+script = ExtResource("1_a3sbi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -0.349066
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_ax3we")
 autoplay = "default"
@@ -44,3 +68,8 @@ frame_progress = 0.38792
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bmv74")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g4nou")
+}
