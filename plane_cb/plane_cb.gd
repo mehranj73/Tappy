@@ -33,4 +33,5 @@ func fly()->void:
 
 func die() -> void:
 	animated_sprite_2d.stop()
+	GameManager.on_game_over.emit()
 	set_physics_process(false)

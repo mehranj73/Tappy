@@ -6,10 +6,10 @@ extends Control
 
 var _can_ress_space: bool = false
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	on_game_over()
-	pass # Replace with function body.
+	GameManager.on_game_over.connect(on_game_over)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
