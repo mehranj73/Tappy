@@ -16,7 +16,7 @@ func _ready():
 func _process(delta):
 	if _can_ress_space:
 		if Input.is_action_just_pressed("fly"):
-			GameManager.load_game_scene()
+			GameManager.load_main_scene()
 
 
 func on_game_over() -> void:
